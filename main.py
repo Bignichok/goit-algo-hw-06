@@ -66,3 +66,28 @@ nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
 plt.title("Транспортна мережа України з вагами")
 plt.show()
 
+# Аналіз основних характеристик графа
+
+# Кількість вершин та ребер
+num_nodes = G.number_of_nodes()
+num_edges = G.number_of_edges()
+print(f"Кількість вершин: {num_nodes}")
+print(f"Кількість ребер: {num_edges}")
+
+# Ступінь вершин
+degree_dict = dict(G.degree())
+print("Ступінь кожної вершини:")
+for node, degree in degree_dict.items():
+    print(f"{node}: {degree}")
+
+# Середній ступінь вершини
+avg_degree = sum(degree_dict.values()) / num_nodes
+print(f"Середній ступінь вершини: {avg_degree:.2f}")
+
+# Аналіз компонентів зв'язності
+connected_components = list(nx.connected_components(G))
+num_connected_components = nx.number_connected_components(G)
+print(f"Кількість компонентів зв'язності: {num_connected_components}")
+print("Вершини в кожній компоненті зв'язності:")
+for i, component in enumerate(connected_components):
+    print(f"Компонента {i + 1}: {component}")
